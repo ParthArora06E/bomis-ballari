@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <!-- Column 1: Brand -->
         <div class="flex flex-col gap-6">
           <a href="${base}index.html" class="inline-block">
-            <img src="${base}logo/footer-logo.png" alt="BOMIS Ballari" class="h-28 md:h-36 w-auto" loading="lazy">
+            <img src="${base}logo/footer-logo.png" alt="BOMIS Ballari" class="h-32 md:h-44 lg:h-48 w-auto" loading="lazy">
           </a>
           <p class="text-[#57534E] text-[15px] leading-relaxed max-w-[320px]">
             Safe, playful early education for children aged 1–6, guided by experienced educators who nurture curiosity.

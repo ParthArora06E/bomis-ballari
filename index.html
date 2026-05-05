@@ -32,6 +32,27 @@
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
     ::-webkit-scrollbar-thumb:hover { background: #bbb; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    @keyframes pulse-subtle {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    .animate-pulse-subtle { animation: pulse-subtle 4s ease-in-out infinite; }
+
+    /* Testimonial Reel Styles */
+    .reel-container { height: 500px; scroll-snap-type: y mandatory; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+    .reel-container::-webkit-scrollbar { display: none; }
+    .reel-item { height: 100%; scroll-snap-align: start; flex-shrink: 0; position: relative; overflow: hidden; border-radius: 24px; }
+    .reel-item video { width: 100%; height: 100%; object-fit: cover; }
+    .reel-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%); pointer-events: none; }
+    .reel-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; color: white; }
+    .mute-toggle { position: absolute; top: 20px; right: 20px; z-index: 40; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 99px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s ease; }
+    .mute-toggle:hover { background: rgba(0,0,0,0.7); transform: scale(1.1); }
   </style>
   <script>document.documentElement.classList.remove('no-js');</script>
   <link rel="stylesheet" href="responsive.css">
@@ -71,11 +92,40 @@
       </div>
       <div class="relative scroll-reveal active">
         <!-- Floating Doodles -->
-
+        <img src="assets/home/bird.png" alt="BOMIS Bird Mascot" class="absolute -top-6 -left-6 w-10 md:w-12 h-auto z-20 animate-float drop-shadow-sm" loading="eager" width="40" height="21">
         
         <div class="relative aspect-[5/4] rounded-[40px] overflow-hidden shadow-2xl z-10">
           <img src="home%20contant/images/index_preprimary.jpg" alt="Welcome Preschoolers" class="w-full h-full object-cover" loading="lazy">
           <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMISSIONS CALL-OUT SECTION -->
+  <section class="py-12 px-4 md:px-8 bg-[#F7F5F2]">
+    <div class="max-w-[1240px] mx-auto flex justify-center">
+      <div class="scroll-reveal bg-white p-6 md:p-8 rounded-[40px] shadow-2xl flex flex-col md:flex-row items-center gap-8 border border-[#e25d2a]/10 max-w-[900px] w-full hover:shadow-[0_20px_50px_rgba(226,93,42,0.15)] transition-all duration-500 group animate-pulse-subtle">
+        <!-- Poster Image -->
+        <div class="w-full md:w-1/3 shrink-0 relative overflow-hidden rounded-[24px]">
+          <img src="logo/image.png" alt="Admissions Open 2026-27" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" loading="eager" width="300">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+        </div>
+        <!-- Text Content -->
+        <div class="flex-grow text-center md:text-left">
+          <div class="inline-block bg-[#e25d2a]/10 text-[#e25d2a] font-bold text-[12px] uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+            Limited Seats Available
+          </div>
+          <h3 class="text-[28px] md:text-[36px] font-extrabold text-[#1a1a1a] leading-tight mb-4">
+            Admissions Open <span class="text-[#e25d2a]">2026-27</span>
+          </h3>
+          <p class="text-[#666] text-[16px] md:text-[18px] leading-relaxed mb-6">
+            Secure your child's future at Birla Open Minds International School. Join our community of joyful learners today.
+          </p>
+          <div class="flex flex-wrap justify-center md:justify-start gap-4">
+            <a href="enquiry.html" class="btn-primary !py-3 !px-8 text-[15px]">Enquire Now</a>
+            <a href="contact.html" class="btn-secondary !py-3 !px-8 text-[15px]">Contact Us</a>
+          </div>
         </div>
       </div>
     </div>
@@ -126,7 +176,7 @@
         <div class="aspect-[16/10] md:aspect-square rounded-[48px] overflow-hidden shadow-2xl">
           <img src="home%20contant/images/school-building.jpg" alt="Campus Life" class="w-full h-full object-cover" loading="lazy">
         </div>
-
+        <img src="assets/home/bird.png" alt="Decorative Bird" class="absolute -bottom-4 -right-4 w-8 md:w-10 h-auto z-20 animate-float opacity-80" style="animation-delay: 1s" loading="lazy" width="34" height="18">
       </div>
       <div class="scroll-reveal">
         <h2 class="text-[36px] md:text-[48px] font-extrabold text-[#1a1a1a] leading-tight mb-8">
@@ -149,7 +199,7 @@
   <section class="py-24 px-4 md:px-8 bg-white">
     <div class="max-w-[1240px] mx-auto">
       <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-[36px] md:text-[48px] font-extrabold text-[#1a1a1a] mb-4">Our Programs</h2>
+        <h2 class="text-[36px] md:text-[48px] font-extrabold text-[#1a1a1a] mb-4">Our Programs <img src="assets/home/bird.png" alt="Bird" class="inline-block w-8 h-auto ml-2 mb-2 opacity-60" loading="lazy" width="32" height="17"></h2>
         <p class="text-[#666] text-[18px]">Tailored learning journeys for every stage of development.</p>
       </div>
       
@@ -200,7 +250,78 @@
     </div>
   </section>
 
-  <!-- 5. OUR FACILITIES SECTION -->
+  <!-- 5. TESTIMONIAL REEL SECTION -->
+  <section class="py-24 px-4 md:px-8 bg-white relative overflow-hidden">
+    <div class="max-w-[1240px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="scroll-reveal">
+        <div class="inline-flex items-center gap-2 bg-[#e25d2a]/10 px-4 py-1.5 rounded-full mb-6">
+          <span class="text-[#e25d2a] font-bold text-[12px] uppercase tracking-widest">Parent Stories</span>
+        </div>
+        <h2 class="text-[36px] md:text-[54px] font-extrabold text-[#1a1a1a] leading-[1.1] mb-8">
+          What Our <span class="text-[#e25d2a]">Parents</span> Say
+        </h2>
+        <p class="text-[#666] text-[18px] leading-relaxed mb-10 max-w-[500px]">
+          Experience the BOMIS journey through the eyes of our parents. Watch our quick video testimonials to hear about their experiences.
+        </p>
+        <div class="flex items-center gap-4">
+          <a href="testimonials.html" class="btn-secondary">View All Testimonials</a>
+        </div>
+      </div>
+
+      <div class="scroll-reveal relative max-w-[340px] mx-auto lg:mr-0">
+        <div id="testimonial-reel" class="reel-container shadow-2xl border-[8px] border-white rounded-[40px]">
+          <!-- Reel 1 -->
+          <div class="reel-item">
+            <video muted loop playsinline preload="metadata">
+              <source src="clients%20reviews/VID20260117113145.mp4" type="video/mp4">
+            </video>
+            <div class="reel-overlay"></div>
+            <div class="reel-content">
+              <div class="flex gap-1 mb-2">
+                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <p class="font-bold text-[18px]">"The Best Environment"</p>
+              <p class="text-[14px] text-white/80">Happy BOMIS Parent</p>
+            </div>
+          </div>
+          <!-- Reel 2 -->
+          <div class="reel-item">
+            <video muted loop playsinline preload="metadata">
+              <source src="clients%20reviews/VID20260117114037.mp4" type="video/mp4">
+            </video>
+            <div class="reel-overlay"></div>
+            <div class="reel-content">
+              <p class="font-bold text-[18px]">"Amazing Growth"</p>
+              <p class="text-[14px] text-white/80">BOMIS Preschool Parent</p>
+            </div>
+          </div>
+          <!-- Reel 3 -->
+          <div class="reel-item">
+            <video muted loop playsinline preload="metadata">
+              <source src="clients%20reviews/VID20260117114548.mp4" type="video/mp4">
+            </video>
+            <div class="reel-overlay"></div>
+            <div class="reel-content">
+              <p class="font-bold text-[18px]">"Safe & Nurturing"</p>
+              <p class="text-[14px] text-white/80">Primary School Parent</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Reel Controls Overlay (Optional) -->
+        <div class="absolute right-6 bottom-32 flex flex-col gap-4 z-30">
+          <button class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/></svg></button>
+          <button class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. OUR FACILITIES SECTION -->
   <section class="py-20 px-4 md:px-8 bg-[#f7f5f2]">
     <div class="max-w-[1240px] mx-auto">
       <!-- Section Header -->
@@ -444,6 +565,38 @@
       setTimeout(openP, 2000);
       closeBtn.onclick = closeP;
       overlay.onclick = closeP;
+
+      // Testimonial Reel Autoplay
+      const reel = document.getElementById('testimonial-reel');
+      if (reel) {
+        let index = 0;
+        const items = reel.querySelectorAll('.reel-item');
+        const count = items.length;
+
+        const autoPlayReel = () => {
+          index = (index + 1) % count;
+          reel.scrollTo({
+            top: index * reel.offsetHeight,
+            behavior: 'smooth'
+          });
+          
+          // Play current video
+          items.forEach((item, i) => {
+            const vid = item.querySelector('video');
+            if (i === index) vid.play();
+            else vid.pause();
+          });
+        };
+
+        let interval = setInterval(autoPlayReel, 5000);
+
+        reel.addEventListener('mouseenter', () => clearInterval(interval));
+        reel.addEventListener('mouseleave', () => interval = setInterval(autoPlayReel, 5000));
+        
+        // Initial play
+        const firstVid = items[0].querySelector('video');
+        if (firstVid) firstVid.play();
+      }
     });
   </script>
 </body>

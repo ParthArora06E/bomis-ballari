@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <nav class="w-full lg:max-w-[1240px] bg-white backdrop-blur-md lg:rounded-full px-5 md:px-8 py-3.5 md:py-3 flex items-center justify-between shadow-lg border-b lg:border border-black/5 pointer-events-auto">
             <!-- Logo -->
             <a href="${base}index.html" class="flex items-center cursor-pointer shrink-0">
-                <img src="${base}logo/birla-logo-new.png" alt="BOMIS Ballari" class="h-10 md:h-14 w-auto" loading="lazy">
+                <img src="${base}logo/birla-logo-new.png" alt="BOMIS Ballari" class="h-12 md:h-20 lg:h-24 w-auto" loading="lazy">
             </a>
 
             <!-- Links (Desktop) -->
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div id="mobile-menu-content" class="absolute right-0 top-0 h-full w-[85%] max-w-[360px] bg-white shadow-2xl flex flex-col p-8 pt-12 translate-x-full transition-transform duration-500 ease-in-out rounded-l-[32px]">
             <!-- Header inside menu -->
             <div class="flex justify-center items-center mb-10">
-                <img src="${base}logo/birla-logo-new.png" alt="Logo" class="h-20 w-auto" loading="lazy">
+                <img src="${base}logo/birla-logo-new.png" alt="Logo" class="h-28 w-auto" loading="lazy">
                 <button id="close-menu-btn" class="absolute top-5 left-5 p-1 text-[#231F20]/60 hover:text-[#EA580C] transition-colors z-[9999]">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
