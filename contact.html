@@ -132,16 +132,17 @@
           
           <h2 class="text-[#111] font-bold text-[32px] mb-8 text-left">Secure a spot now</h2>
           
-          <form class="flex flex-col gap-6 text-left">
+          <form id="contactForm" class="flex flex-col gap-6 text-left">
+            <input type="hidden" name="form_type" value="contact">
             <!-- Row 1: First Name | Last Name -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="flex flex-col gap-2">
                 <label class="text-[13px] font-semibold text-[#555] ml-1">First Name *</label>
-                <input type="text" placeholder="John" class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all placeholder:text-[#888]">
+                <input type="text" name="first_name" required placeholder="John" class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all placeholder:text-[#888]">
               </div>
               <div class="flex flex-col gap-2">
                 <label class="text-[13px] font-semibold text-[#555] ml-1">Last Name *</label>
-                <input type="text" placeholder="Smith" class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all placeholder:text-[#888]">
+                <input type="text" name="last_name" required placeholder="Smith" class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all placeholder:text-[#888]">
               </div>
             </div>
 
@@ -149,11 +150,11 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="flex flex-col gap-2">
                 <label class="text-[13px] font-semibold text-[#555] ml-1">Email Address *</label>
-                <input type="email" placeholder="john@example.com" class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all placeholder:text-[#888]">
+                <input type="email" name="email" required placeholder="john@example.com" class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all placeholder:text-[#888]">
               </div>
               <div class="flex flex-col gap-2">
                 <label class="text-[13px] font-semibold text-[#555] ml-1">Phone Number *</label>
-                <input type="tel" placeholder="(415) 555-1234" class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all placeholder:text-[#888]">
+                <input type="tel" name="phone" required placeholder="(415) 555-1234" class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all placeholder:text-[#888]">
               </div>
             </div>
 
@@ -161,7 +162,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="flex flex-col gap-2">
                 <label class="text-[13px] font-semibold text-[#555] ml-1">Child's Age</label>
-                <select class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all text-[#888] appearance-none cursor-pointer">
+                <select name="child_age" class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all text-[#888] appearance-none cursor-pointer">
                   <option selected disabled>Select age</option>
                   <option>1-2 Years</option>
                   <option>2-3 Years</option>
@@ -171,7 +172,7 @@
               </div>
               <div class="flex flex-col gap-2">
                 <label class="text-[13px] font-semibold text-[#555] ml-1">Program of Interest</label>
-                <select class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all text-[#888] appearance-none cursor-pointer">
+                <select name="program" class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all text-[#888] appearance-none cursor-pointer">
                   <option selected disabled>Select program</option>
                   <option>Toddler Program</option>
                   <option>Preschool</option>
@@ -181,23 +182,55 @@
               </div>
             </div>
 
-            <!-- Row 4: Desired Start Date -->
-            <div class="flex flex-col gap-2">
-              <label class="text-[13px] font-semibold text-[#555] ml-1">Desired Start Date</label>
-              <input type="text" placeholder="e.g., September 2026, ASAP, Flexible" class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all placeholder:text-[#888]">
-            </div>
-
             <!-- Row 5: Message -->
             <div class="flex flex-col gap-2">
               <label class="text-[13px] font-semibold text-[#555] ml-1">Message</label>
-              <textarea placeholder="Tell us a bit about your child and what you're looking for..." rows="5" class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all placeholder:text-[#888] resize-none"></textarea>
+              <textarea name="message" placeholder="Tell us a bit about your child and what you're looking for..." rows="5" class="bg-[#f1efec] rounded-[12px] px-5 py-4 border-none focus:ring-2 focus:ring-[#e25d2a]/20 outline-none text-[15px] transition-all placeholder:text-[#888] resize-none"></textarea>
             </div>
 
             <!-- Button -->
-            <button class="w-full bg-[#e25d2a] hover:bg-[#d14d1f] text-white font-bold text-[16px] h-[55px] rounded-full transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-[#e25d2a]/10 hover:scale-[1.01] transform active:scale-[0.99]">
+            <button type="submit" class="w-full bg-[#e25d2a] hover:bg-[#d14d1f] text-white font-bold text-[16px] h-[55px] rounded-full transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-[#e25d2a]/10 hover:scale-[1.01] transform active:scale-[0.99]">
               <span>Send Message</span>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
             </button>
+            <div id="formResponse" class="text-center text-sm font-semibold mt-4 hidden"></div>
+          </form>
+
+          <script>
+            document.getElementById('contactForm').addEventListener('submit', async function(e) {
+              e.preventDefault();
+              const form = e.target;
+              const responseDiv = document.getElementById('formResponse');
+              const btn = form.querySelector('button');
+              const formData = new FormData(form);
+
+              btn.disabled = true;
+              btn.innerHTML = 'Sending...';
+
+              try {
+                const response = await fetch('api/submit_form.php', {
+                  method: 'POST',
+                  body: formData
+                });
+                const result = await response.json();
+                
+                responseDiv.classList.remove('hidden', 'text-red-500', 'text-green-500');
+                responseDiv.classList.add(result.status === 'success' ? 'text-green-500' : 'text-red-500');
+                responseDiv.textContent = result.message;
+                
+                if (result.status === 'success') {
+                  form.reset();
+                }
+              } catch (error) {
+                responseDiv.classList.remove('hidden');
+                responseDiv.classList.add('text-red-500');
+                responseDiv.textContent = 'An error occurred. Please try again.';
+              } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<span>Send Message</span><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>';
+              }
+            });
+          </script>
 
             <!-- Footer Text -->
             <p class="text-center text-[#888] text-[12px] mt-2">

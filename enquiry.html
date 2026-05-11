@@ -95,21 +95,22 @@
           <h2 class="text-2xl font-bold text-[#1a1a1a] mb-8">Admission Enquiry Form</h2>
           
           <form id="enquiryForm" class="space-y-6">
+            <input type="hidden" name="form_type" value="enquiry">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
               <!-- Parent Name -->
               <div class="space-y-2">
                 <label class="text-[14px] font-bold text-[#1a1a1a]/70 ml-1">Parent's Full Name</label>
-                <input type="text" placeholder="John Doe" class="input-field" required>
+                <input type="text" name="parent_name" placeholder="John Doe" class="input-field" required>
               </div>
               <!-- Child Name -->
               <div class="space-y-2">
                 <label class="text-[14px] font-bold text-[#1a1a1a]/70 ml-1">Child's Full Name</label>
-                <input type="text" placeholder="Jane Doe" class="input-field" required>
+                <input type="text" name="child_name" placeholder="Jane Doe" class="input-field" required>
               </div>
               <!-- Child Age -->
               <div class="space-y-2">
                 <label class="text-[14px] font-bold text-[#1a1a1a]/70 ml-1">Child's Age</label>
-                <select class="input-field cursor-pointer" required>
+                <select name="child_age" class="input-field cursor-pointer" required>
                   <option value="" disabled selected>Select Age</option>
                   <option>1.5 - 2 Years</option>
                   <option>2 - 3 Years</option>
@@ -123,7 +124,7 @@
               <!-- Program Interest -->
               <div class="space-y-2">
                 <label class="text-[14px] font-bold text-[#1a1a1a]/70 ml-1">Program Interest</label>
-                <select class="input-field cursor-pointer" required>
+                <select name="program" class="input-field cursor-pointer" required>
                   <option value="" disabled selected>Select Program</option>
                   <option>Pre-School</option>
                   <option>Primary School</option>
@@ -133,26 +134,69 @@
               <!-- Phone -->
               <div class="space-y-2">
                 <label class="text-[14px] font-bold text-[#1a1a1a]/70 ml-1">Phone Number</label>
-                <input type="tel" placeholder="+91 00000 00000" class="input-field" required>
+                <input type="tel" name="phone" placeholder="+91 00000 00000" class="input-field" required>
               </div>
               <!-- Email -->
               <div class="space-y-2">
                 <label class="text-[14px] font-bold text-[#1a1a1a]/70 ml-1">Email Address</label>
-                <input type="email" placeholder="name@example.com" class="input-field" required>
+                <input type="email" name="email" placeholder="name@example.com" class="input-field" required>
               </div>
             </div>
 
             <!-- Message -->
             <div class="space-y-2">
               <label class="text-[14px] font-bold text-[#1a1a1a]/70 ml-1">Message (Optional)</label>
-              <textarea rows="3" placeholder="How can we help you?" class="input-field resize-none"></textarea>
+              <textarea name="message" rows="3" placeholder="How can we help you?" class="input-field resize-none"></textarea>
             </div>
 
             <button type="submit" class="w-full bg-[#e25d2a] hover:bg-[#c94d22] text-white font-bold py-4 rounded-full shadow-lg shadow-[#e25d2a]/20 transition-all duration-300 transform hover:-translate-y-1 flex justify-center items-center gap-3 group">
               <span>Submit Enquiry</span>
               <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </button>
+            <div id="formResponse" class="text-center text-sm font-semibold mt-4 hidden"></div>
           </form>
+
+          <script>
+            document.getElementById('enquiryForm').addEventListener('submit', async function(e) {
+              e.preventDefault();
+              const form = e.target;
+              const responseDiv = document.getElementById('formResponse');
+              const btn = form.querySelector('button');
+              const formData = new FormData(form);
+
+              btn.disabled = true;
+              btn.innerHTML = 'Submitting...';
+
+              try {
+                const response = await fetch('api/submit_form.php', {
+                  method: 'POST',
+                  body: formData
+                });
+                const result = await response.json();
+                
+                responseDiv.classList.remove('hidden', 'text-red-500', 'text-green-500');
+                responseDiv.classList.add(result.status === 'success' ? 'text-green-500' : 'text-red-500');
+                responseDiv.textContent = result.message;
+                
+                if (result.status === 'success') {
+                  form.reset();
+                  // Check if there is a global success message div to show
+                  const globalSuccess = document.getElementById('successMessage');
+                  if (globalSuccess) {
+                    form.classList.add('hidden');
+                    globalSuccess.classList.remove('hidden');
+                  }
+                }
+              } catch (error) {
+                responseDiv.classList.remove('hidden');
+                responseDiv.classList.add('text-red-500');
+                responseDiv.textContent = 'An error occurred. Please try again.';
+              } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<span>Submit Enquiry</span><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>';
+              }
+            });
+          </script>
 
           <!-- Success Message -->
           <div id="successMessage" class="hidden text-center py-8">

@@ -521,21 +521,23 @@
                   <h2 class="text-[22px] md:text-[28px] font-extrabold text-[#1a1a1a] mb-1.5 leading-tight text-orange-600 uppercase">BOMIS Admission 2026</h2>
                   <p class="text-[#666] text-[13px] md:text-[14px] mb-6 font-medium px-2">Enquire now and our team will assist you with the admission process for 2026-27.</p>
                   <form id="new-popup-form" class="w-full flex flex-col gap-4 md:gap-5 text-left">
+                      <input type="hidden" name="form_type" value="enquiry">
                       <div>
                           <label class="block text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1.5 ml-1">Student / Parent Name</label>
-                          <input type="text" required placeholder="Enter full name" class="w-full px-4 py-3.5 bg-gray-50 border border-transparent rounded-2xl focus:outline-none focus:border-[#EA580C]/30 focus:bg-white transition-all text-[13px] font-semibold text-black placeholder:text-gray-400">
+                          <input type="text" name="parent_name" required placeholder="Enter full name" class="w-full px-4 py-3.5 bg-gray-50 border border-transparent rounded-2xl focus:outline-none focus:border-[#EA580C]/30 focus:bg-white transition-all text-[13px] font-semibold text-black placeholder:text-gray-400">
                       </div>
                       <div>
                           <label class="block text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1.5 ml-1">Phone Number</label>
-                          <input type="tel" required placeholder="Enter 10-digit number" class="w-full px-4 py-3.5 bg-gray-50 border border-transparent rounded-2xl focus:outline-none focus:border-[#EA580C]/30 focus:bg-white transition-all text-[13px] font-semibold text-black placeholder:text-gray-400">
+                          <input type="tel" name="phone" required placeholder="Enter 10-digit number" class="w-full px-4 py-3.5 bg-gray-50 border border-transparent rounded-2xl focus:outline-none focus:border-[#EA580C]/30 focus:bg-white transition-all text-[13px] font-semibold text-black placeholder:text-gray-400">
                       </div>
                       <div>
                           <label class="block text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1.5 ml-1">Email Address (Optional)</label>
-                          <input type="email" placeholder="Enter your email" class="w-full px-4 py-3.5 bg-gray-50 border border-transparent rounded-2xl focus:outline-none focus:border-[#EA580C]/30 focus:bg-white transition-all text-[13px] font-semibold text-black placeholder:text-gray-400">
+                          <input type="email" name="email" placeholder="Enter your email" class="w-full px-4 py-3.5 bg-gray-50 border border-transparent rounded-2xl focus:outline-none focus:border-[#EA580C]/30 focus:bg-white transition-all text-[13px] font-semibold text-black placeholder:text-gray-400">
                       </div>
                       <button type="submit" class="w-full bg-[#EA580C] hover:bg-[#D94E05] text-white font-bold py-3.5 rounded-2xl shadow-xl shadow-orange-500/20 transition-all mt-2 active:scale-95 text-[14px]">
                           Submit Enquiry
                       </button>
+                      <div id="popupFormResponse" class="text-center text-[12px] font-bold mt-2 hidden"></div>
                   </form>
               </div>
           </div>
@@ -565,6 +567,41 @@
       setTimeout(openP, 2000);
       closeBtn.onclick = closeP;
       overlay.onclick = closeP;
+
+      form.onsubmit = async (e) => {
+          e.preventDefault();
+          const responseDiv = document.getElementById('popupFormResponse');
+          const btn = form.querySelector('button');
+          const formData = new FormData(form);
+          const base = isSubPage ? '../' : '';
+
+          btn.disabled = true;
+          btn.textContent = 'Submitting...';
+
+          try {
+              const response = await fetch(`${base}api/submit_form.php`, {
+                  method: 'POST',
+                  body: formData
+              });
+              const result = await response.json();
+              
+              responseDiv.classList.remove('hidden', 'text-red-500', 'text-green-500');
+              responseDiv.classList.add(result.status === 'success' ? 'text-green-500' : 'text-red-500');
+              responseDiv.textContent = result.message;
+              
+              if (result.status === 'success') {
+                  form.reset();
+                  setTimeout(closeP, 2000);
+              }
+          } catch (error) {
+              responseDiv.classList.remove('hidden');
+              responseDiv.classList.add('text-red-500');
+              responseDiv.textContent = 'An error occurred. Please try again.';
+          } finally {
+              btn.disabled = false;
+              btn.textContent = 'Submit Enquiry';
+          }
+      };
 
       // Testimonial Reel Autoplay
       const reel = document.getElementById('testimonial-reel');

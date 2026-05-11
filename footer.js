@@ -74,15 +74,17 @@ document.addEventListener('DOMContentLoaded', () => {
           </ul>
         </div>
 
-        <!-- Column 4: Portal -->
-        <div class="flex flex-col gap-5">
-          <h3 class="text-[18px] font-bold text-[#231F20]">Portal</h3>
-          <ul class="flex flex-col gap-3">
-            <li><a href="${base}parents-login.html" class="text-[#57534E] text-[15px] font-medium hover:text-[#231F20] transition-colors duration-200">Parents Login</a></li>
-            <li><a href="${base}staff-login.html" class="text-[#57534E] text-[15px] font-medium hover:text-[#231F20] transition-colors duration-200">Staff Login</a></li>
-          </ul>
+        <!-- Column 4: Newsletter -->
+        <div class="flex flex-col gap-6">
+          <h3 class="text-[18px] font-bold text-[#231F20]">Newsletter</h3>
+          <p class="text-[#57534E] text-[15px] leading-relaxed">Stay updated with our latest news and events.</p>
+          <form id="newsletterForm" class="flex flex-col gap-3">
+            <input type="hidden" name="form_type" value="newsletter">
+            <input type="email" name="email" required placeholder="Your email address" class="w-full px-5 py-3.5 bg-white/50 border border-[#231F20]/10 rounded-2xl focus:outline-none focus:border-[#e25d2a] transition-all text-[14px]">
+            <button type="submit" class="w-full bg-[#e25d2a] text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-[#e25d2a]/10 hover:bg-[#d14d1f] transition-all text-[14px]">Subscribe</button>
+            <div id="newsletterResponse" class="text-[12px] font-bold mt-1 hidden"></div>
+          </form>
         </div>
-
       </div>
 
       <!-- Thin Divider Line -->
@@ -124,4 +126,42 @@ document.addEventListener('DOMContentLoaded', () => {
   </footer>
     `;
     footerPlaceholder.innerHTML = footerHTML;
+
+    // Handle Newsletter Submission
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const responseDiv = document.getElementById('newsletterResponse');
+            const btn = newsletterForm.querySelector('button');
+            const formData = new FormData(newsletterForm);
+
+            btn.disabled = true;
+            btn.textContent = 'Subscribing...';
+
+            try {
+                const response = await fetch(`${base}api/submit_form.php`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                
+                responseDiv.classList.remove('hidden', 'text-red-500', 'text-[#231F20]');
+                responseDiv.classList.add(result.status === 'success' ? 'text-[#231F20]' : 'text-red-500');
+                responseDiv.textContent = result.message;
+                
+                if (result.status === 'success') {
+                    newsletterForm.reset();
+                    setTimeout(() => responseDiv.classList.add('hidden'), 5000);
+                }
+            } catch (error) {
+                responseDiv.classList.remove('hidden');
+                responseDiv.classList.add('text-red-500');
+                responseDiv.textContent = 'Failed to subscribe.';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Subscribe';
+            }
+        });
+    }
 });
