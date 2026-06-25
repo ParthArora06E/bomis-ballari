@@ -1,0 +1,8 @@
+node_modules/
+package.json
+package-lock.json
+optimize.js
+compress_videos.js
+update-videos.js
+fix-contrast.js
+remove-pixel.js

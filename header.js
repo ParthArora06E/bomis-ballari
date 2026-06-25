@@ -24,36 +24,36 @@ document.addEventListener('DOMContentLoaded', () => {
         <nav class="w-full lg:max-w-[1240px] bg-white backdrop-blur-md lg:rounded-full px-5 md:px-8 py-3.5 md:py-3 flex items-center justify-between shadow-lg border-b lg:border border-black/5 pointer-events-auto">
             <!-- Logo -->
             <a href="${base}index.html" class="flex items-center cursor-pointer shrink-0">
-                <img src="${base}logo/birla-logo-new.png" alt="BOMIS Ballari" class="h-12 md:h-20 lg:h-24 w-auto" loading="lazy">
+                <img src="${base}logo/birla-logo-new.webp" alt="BOMIS Ballari" class="h-12 md:h-20 lg:h-24 w-auto" loading="lazy">
             </a>
 
             <!-- Links (Desktop) -->
             <div class="hidden lg:flex items-center gap-7 mx-4">
-                <a href="${base}index.html" class="${isHome ? 'text-[#EA580C] font-semibold' : 'text-[#231F20]/70 hover:text-[#EA580C] font-medium'} text-[14px] transition-colors duration-200">Home</a>
-                <a href="${base}about.html" class="${isAbout ? 'text-[#EA580C] font-semibold' : 'text-[#231F20]/70 hover:text-[#EA580C] font-medium'} text-[14px] transition-colors duration-200">About Us</a>
-                <a href="${base}programs.html" class="${isPrograms ? 'text-[#EA580C] font-semibold' : 'text-[#231F20]/70 hover:text-[#EA580C] font-medium'} text-[14px] transition-colors duration-200">Programs</a>
-                <a href="${base}gallery.html" class="${isGallery ? 'text-[#EA580C] font-semibold' : 'text-[#231F20]/70 hover:text-[#EA580C] font-medium'} text-[14px] transition-colors duration-200">Gallery</a>
-                <a href="${base}testimonials.html" class="${isTestimonials ? 'text-[#EA580C] font-semibold' : 'text-[#231F20]/70 hover:text-[#EA580C] font-medium'} text-[14px] transition-colors duration-200">Testimonials</a>
-                <a href="${base}blog.html" class="${isBlogs ? 'text-[#EA580C] font-semibold' : 'text-[#231F20]/70 hover:text-[#EA580C] font-medium'} text-[14px] transition-colors duration-200">Blogs</a>
-                <a href="${base}enquiry.html" class="${isEnquiry ? 'text-[#EA580C] font-semibold' : 'text-[#231F20]/70 hover:text-[#EA580C] font-medium'} text-[14px] transition-colors duration-200">Enquiry</a>
+                <a href="${base}index.html" class="${isHome ? 'text-[#c2410c] font-semibold' : 'text-[#231F20]/70 hover:text-[#c2410c] font-medium'} text-[14px] transition-colors duration-200">Home</a>
+                <a href="${base}about.html" class="${isAbout ? 'text-[#c2410c] font-semibold' : 'text-[#231F20]/70 hover:text-[#c2410c] font-medium'} text-[14px] transition-colors duration-200">About Us</a>
+                <a href="${base}programs.html" class="${isPrograms ? 'text-[#c2410c] font-semibold' : 'text-[#231F20]/70 hover:text-[#c2410c] font-medium'} text-[14px] transition-colors duration-200">Programs</a>
+                <a href="${base}gallery.html" class="${isGallery ? 'text-[#c2410c] font-semibold' : 'text-[#231F20]/70 hover:text-[#c2410c] font-medium'} text-[14px] transition-colors duration-200">Gallery</a>
+                <a href="${base}testimonials.html" class="${isTestimonials ? 'text-[#c2410c] font-semibold' : 'text-[#231F20]/70 hover:text-[#c2410c] font-medium'} text-[14px] transition-colors duration-200">Testimonials</a>
+                <a href="${base}blog.html" class="${isBlogs ? 'text-[#c2410c] font-semibold' : 'text-[#231F20]/70 hover:text-[#c2410c] font-medium'} text-[14px] transition-colors duration-200">Blogs</a>
+                <a href="${base}enquiry.html" class="${isEnquiry ? 'text-[#c2410c] font-semibold' : 'text-[#231F20]/70 hover:text-[#c2410c] font-medium'} text-[14px] transition-colors duration-200">Enquiry</a>
                 
                 <!-- Login Dropdown -->
                 <div class="relative group py-2">
-                    <button class="flex items-center gap-1.5 text-[#231F20]/70 hover:text-[#EA580C] font-medium text-[14px] transition-colors duration-200 group-hover:text-[#EA580C]">
+                    <button class="flex items-center gap-1.5 text-[#231F20]/70 hover:text-[#c2410c] font-medium text-[14px] transition-colors duration-200 group-hover:text-[#c2410c]">
                         Login
                         <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <!-- Dropdown Menu -->
                     <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.15)] border border-black/5 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                        <a href="${base}parents-login.html" class="flex items-center px-4 py-2.5 text-[13px] font-semibold text-[#231F20]/80 hover:bg-gray-50 hover:text-[#EA580C] transition-colors">Parents Login</a>
-                        <a href="${base}staff-login.html" class="flex items-center px-4 py-2.5 text-[13px] font-semibold text-[#231F20]/80 hover:bg-gray-50 hover:text-[#EA580C] transition-colors">Staff Login</a>
+                        <a href="${base}parents-login.html" class="flex items-center px-4 py-2.5 text-[13px] font-semibold text-[#231F20]/80 hover:bg-gray-50 hover:text-[#c2410c] transition-colors">Parents Login</a>
+                        <a href="${base}staff-login.html" class="flex items-center px-4 py-2.5 text-[13px] font-semibold text-[#231F20]/80 hover:bg-gray-50 hover:text-[#c2410c] transition-colors">Staff Login</a>
                     </div>
                 </div>
             </div>
 
             <!-- Right Side -->
             <div class="flex items-center gap-4 shrink-0">
-                <a href="${base}contact.html" class="hidden md:flex bg-[#EA580C] hover:bg-[#D94E05] text-white font-bold text-[13px] px-6 py-2.5 rounded-full transition-all duration-300 shadow-md whitespace-nowrap">Contact Us</a>
+                <a href="${base}contact.html" class="hidden md:flex bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold text-[13px] px-6 py-2.5 rounded-full transition-all duration-300 shadow-md whitespace-nowrap">Contact Us</a>
                 
                 <!-- Hamburger Button -->
                 <button id="mobile-menu-btn" class="lg:hidden flex flex-col gap-1.5 p-2 focus:outline-none z-[200] relative">
@@ -70,24 +70,24 @@ document.addEventListener('DOMContentLoaded', () => {
         <div id="mobile-menu-content" class="absolute right-0 top-0 h-full w-[85%] max-w-[360px] bg-white shadow-2xl flex flex-col p-8 pt-12 translate-x-full transition-transform duration-500 ease-in-out rounded-l-[32px]">
             <!-- Header inside menu -->
             <div class="flex justify-center items-center mb-10">
-                <img src="${base}logo/birla-logo-new.png" alt="Logo" class="h-28 w-auto" loading="lazy">
-                <button id="close-menu-btn" class="absolute top-5 left-5 p-1 text-[#231F20]/60 hover:text-[#EA580C] transition-colors z-[9999]">
+                <img src="${base}logo/birla-logo-new.webp" alt="Logo" class="h-28 w-auto" loading="lazy">
+                <button id="close-menu-btn" class="absolute top-5 left-5 p-1 text-[#231F20]/60 hover:text-[#c2410c] transition-colors z-[9999]">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
             </div>
 
             <!-- Navigation Links (Mobile) -->
             <nav class="flex flex-col gap-1 overflow-y-auto pb-10 custom-scrollbar">
-                <a href="${base}index.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isHome ? 'text-[#EA580C] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Home</a>
-                <a href="${base}about.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isAbout ? 'text-[#EA580C] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">About Us</a>
-                <a href="${base}programs.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isPrograms ? 'text-[#EA580C] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Programs</a>
-                <a href="${base}gallery.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isGallery ? 'text-[#EA580C] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Gallery</a>
-                <a href="${base}testimonials.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isTestimonials ? 'text-[#EA580C] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Testimonials</a>
-                <a href="${base}blog.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isBlogs ? 'text-[#EA580C] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Blogs</a>
+                <a href="${base}index.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isHome ? 'text-[#c2410c] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Home</a>
+                <a href="${base}about.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isAbout ? 'text-[#c2410c] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">About Us</a>
+                <a href="${base}programs.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isPrograms ? 'text-[#c2410c] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Programs</a>
+                <a href="${base}gallery.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isGallery ? 'text-[#c2410c] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Gallery</a>
+                <a href="${base}testimonials.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isTestimonials ? 'text-[#c2410c] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Testimonials</a>
+                <a href="${base}blog.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isBlogs ? 'text-[#c2410c] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Blogs</a>
                 <a href="${base}contact.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 text-[#231F20] font-semibold text-[17px]">Contact Us</a>
-                <a href="${base}enquiry.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isEnquiry ? 'text-[#EA580C] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Enquiry</a>
-                <a href="${base}parents-login.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isParentsLogin ? 'text-[#EA580C] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Parents Login</a>
-                <a href="${base}staff-login.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isStaffLogin ? 'text-[#EA580C] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Staff Login</a>
+                <a href="${base}enquiry.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isEnquiry ? 'text-[#c2410c] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Enquiry</a>
+                <a href="${base}parents-login.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isParentsLogin ? 'text-[#c2410c] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Parents Login</a>
+                <a href="${base}staff-login.html" class="flex items-center justify-between py-3.5 border-b border-gray-50 ${isStaffLogin ? 'text-[#c2410c] font-bold' : 'text-[#231F20] font-semibold'} text-[17px]">Staff Login</a>
             </nav>
 
         </div>
